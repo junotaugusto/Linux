@@ -74,8 +74,141 @@ No **Windows**, muitas vezes os programas vêm com suas próprias bibliotecas em
 No **Linux**, as bibliotecas ficam centralizadas em diretórios como `/lib` ou `/usr/lib`, e **vários programas usam as mesmas**. Isso torna o sistema mais enxuto e eficiente.
 
 ---
+## Um pouco sobre diretórios
 
-## Conclusão
+### `/`
+
+É o diretório raiz (root directory). Tudo no Linux começa a partir dele. Diferente do Windows, que possui múltiplas unidades (C:\, D:\ etc), o Linux tem uma única raiz e todas as demais pastas (inclusive discos e dispositivos) são montadas dentro dela.
+
+---
+
+### `/bin`
+
+Significa **binários**. Contém arquivos executáveis essenciais que estão disponíveis para **todos os usuários** (inclusive em modo de recuperação). Por exemplo, comandos como `ls`, `cp`, `mv`, `rm`, `cat` estão aqui.
+
+---
+
+### `/boot`
+
+Armazena os **arquivos necessários para o boot (inicialização)** do sistema, incluindo o kernel (por exemplo: `vmlinuz`), o `initrd`, o `grub` e outros arquivos de inicialização.
+
+---
+
+### `/dev`
+
+Contém os arquivos de **dispositivos** (device files). No Linux, quase tudo é tratado como um arquivo, inclusive dispositivos como discos (`/dev/sda`), partições (`/dev/sda1`), terminal (`/dev/tty`), entre outros. Pen drives, teclados, mouse, todos dispositivos terão entradas no "/dev".
+
+---
+
+### `/etc`
+
+Armazena arquivos de **configuração** do sistema e dos programas instalados. Por exemplo: `/etc/passwd`, `/etc/hostname`, `/etc/network/interfaces`. É uma das pastas mais importantes para administradores de sistema. 
+
+Quando você instala uma aplicação como o Libre Office, por exemplo, os arquivos de configuração do Libre Office estarão dentro de "/etc/libreoffice" por exemplo. 
+
+---
+
+### `/home`
+
+É onde ficam os diretórios dos **usuários comuns**. Cada usuário tem sua própria pasta, como `/home/junot`, com seus arquivos, configurações pessoais e documentos. Equivale à pasta "Documentos" no Windows para cada conta.
+
+---
+
+### `/lib` e `/lib64`
+
+Contêm as **bibliotecas compartilhadas** (libraries) essenciais usadas pelos binários do `/bin` e `/sbin`. Bibliotecas são como "funções prontas" usadas por vários programas. No Linux, é comum várias aplicações compartilharem as mesmas bibliotecas, o que evita duplicações e economiza espaço.
+
+- `/lib` → para sistemas 32 bits.
+- `/lib64` → para bibliotecas de 64 bits.
+
+---
+
+### `/media`
+
+Ponto de montagem automático para **dispositivos removíveis**, como pendrives, CDs/DVDs e HDs externos. Por exemplo: quando você conecta um pendrive, ele pode ser montado em `/media/junot/PENDRIVE`.
+
+Quando você conecta um pendrive, lembre-se do diretório `\dev`, então ele cria uma abstração de objeto no `\dev` e ele monta no `\media`.
+
+---
+
+### `/mnt`
+
+Usado tradicionalmente para **montagens temporárias** de sistemas de arquivos. Por exemplo, montar manualmente uma partição: `mount /dev/sdb1 /mnt`. Um CD por exemplo.
+
+---
+
+### `/opt`
+
+Diretório usado para instalar **programas opcionais** ou de terceiros. Por exemplo, aplicativos que não fazem parte da distribuição padrão do sistema, como o Google Chrome ou softwares proprietários.
+
+---
+
+### `/proc`
+
+Um sistema de arquivos virtual (não é um diretório de verdade no disco). Contém **informações do kernel e dos processos**. Exemplo: `/proc/cpuinfo`, `/proc/meminfo`, `/proc/1` (informações do processo PID 1).
+
+---
+
+### `/root`
+
+É o **diretório home do usuário root**. Diferente de `/home`, que contém os usuários comuns, o superusuário tem sua pasta separada aqui: `/root`.
+
+---
+
+### `/run`
+
+Diretório que armazena **informações voláteis** (temporárias) desde o boot até o momento atual. Substituiu diretórios antigos como `/var/run`.
+
+---
+
+### `/sbin`
+
+Similar ao `/bin`, mas contém **binários essenciais para administração do sistema** (superusuário/root). Exemplos: `ifconfig`, `iptables`, `reboot`, `fdisk`.
+
+---
+
+### `/srv`
+
+Significa "service". Contém arquivos para **serviços do sistema**, como páginas da web (`/srv/www`) ou arquivos de FTP (`/srv/ftp`).
+
+---
+
+### `/sys`
+
+Outro sistema de arquivos virtual (como `/proc`). Usado para **interagir com o kernel e o hardware**. Ajuda a controlar e obter informações sobre dispositivos e drivers do sistema.
+
+---
+
+### `/tmp`
+
+Armazena **arquivos temporários** criados por programas. Esses arquivos podem ser apagados automaticamente quando o sistema reinicia.
+
+---
+
+### `/usr`
+
+Contém **aplicações e arquivos não essenciais** para o funcionamento do sistema. Inclui:
+
+- `/usr/bin`: binários de usuário.
+- `/usr/lib`: bibliotecas.
+- `/usr/share`: arquivos compartilhados (documentação, ícones, traduções).
+- `/usr/local`: instalação de programas feitos manualmente pelo administrador.
+
+---
+
+### `/var`
+
+Contém **arquivos variáveis**, que mudam frequentemente. Exemplo: logs (`/var/log`), filas de impressão (`/var/spool`), arquivos de cache (`/var/cache`), e-mails, banco de dados, etc.
+
+---
+
+# Conclusão
+
+Entender o FHS é essencial para navegar, configurar e administrar sistemas Linux. Cada diretório tem um propósito claro e definido, e esse padrão torna o sistema mais organizado e previsível.
+
+---
+
+**Dica Final**: Use o comando `ls -l /` para visualizar todos os diretórios na raiz do sistema e explorar o que há dentro de cada um.
 
 Saber como o Linux organiza seus arquivos e entender o que é uma biblioteca são passos importantes para começar a dominar o sistema. O FHS nos ajuda a manter tudo padronizado, e o modelo de bibliotecas compartilhadas aumenta a eficiência.
 
