@@ -32,7 +32,9 @@ Ao contrário do SysV, o Systemd é baseado no conceito de unidades (units), que
 
 Essas unidades são configuradas por arquivos do tipo `.service`, `.target`, `.mount`, etc., localizados geralmente em `/etc/systemd/system/` e `/lib/systemd/system/`.
 
-O Systemd tem suporte nativo a dependências entre serviços, garantindo que os processos sejam iniciados na ordem correta. Também suporta paralelismo, iniciando múltiplos serviços simultaneamente sempre que possível, acelerando o processo de boot.
+O Systemd tem suporte nativo a dependências entre serviços (só inicia um serviço se os serviços dos quais ele depende já estiverem prontos), garantindo que os processos sejam iniciados na ordem correta. 
+
+Também suporta paralelismo, iniciando múltiplos serviços simultaneamente sempre que possível, acelerando o processo de boot.
 
 Além disso, o Systemd oferece uma série de funcionalidades extras:
 
