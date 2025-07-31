@@ -26,24 +26,24 @@ systemctl status httpd
 
 Esse comando exibe informações como se o serviço está ativo ou inativo, o PID do processo (se estiver rodando), quando foi iniciado, e os últimos logs relacionados a ele.
 
-Aqui, ele mostra que o serviço não está habilitado. Quando você digita o comando:
+Aqui, ele mostra que o serviço `não está habilitado`. Quando você digita o comando:
 
 ```bash
 systemctl enable httpd
 ```
-Você está dizendo ao sistema que quer que o serviço httpd (que é o servidor Apache) seja iniciado automaticamente sempre que o sistema for ligado.
+Você está dizendo ao sistema que quer que o serviço `httpd` (que é o servidor Apache) `seja iniciado automaticamente` sempre que o sistema for ligado.
 
 A saída:
 ```bash
 Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
 ```
-Significa que o systemctl criou um link simbólico (ou atalho) entre dois arquivos:
+Significa que o systemctl criou um `link simbólico` (ou atalho) entre dois arquivos:
 
-O arquivo original do serviço httpd, que fica em /usr/lib/systemd/system/httpd.service. Esse arquivo tem as instruções de como iniciar e parar o Apache.
+O arquivo `original` do serviço `httpd`, que fica em `/usr/lib/systemd/system/httpd.service`. Esse arquivo tem as instruções de como iniciar e parar o Apache.
 
-E o diretório de serviços ativos no boot, que nesse caso é /etc/systemd/system/multi-user.target.wants/.
+E o diretório de serviços ativos no `boot`, que nesse caso é `/etc/systemd/system/multi-user.target.wants/`.
 
-Esse diretório representa o que o sistema deve iniciar quando atinge o nível de execução chamado multi-user.target, que é o modo texto completo com rede — típico de servidores.
+Esse diretório representa o que o `sistema deve iniciar` quando atinge o nível de execução chamado `multi-user.target`, que é o modo texto completo com rede — típico de servidores.
 
 Criar esse link é a forma que o *systemctl enable* usa para registrar que um serviço deve iniciar automaticamente no boot.
 
